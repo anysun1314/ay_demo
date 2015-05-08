@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/page/dialect
+END
+Mssql12Dialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/page/dialect/Mssql12Dialect.java
+END
+Mssql58Dialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/page/dialect/Mssql58Dialect.java
+END
+PaginationInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/page/dialect/PaginationInterceptor.java
+END
+OracleDialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/page/dialect/OracleDialect.java
+END
+Dialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/page/dialect/Dialect.java
+END
+MysqlDialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/page/dialect/MysqlDialect.java
+END
+DB2Dialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/page/dialect/DB2Dialect.java
+END

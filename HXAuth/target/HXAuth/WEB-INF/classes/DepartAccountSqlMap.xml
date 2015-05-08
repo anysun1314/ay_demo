@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.auth.dao.IDepartAccountDao">
+	
+	<select id="findBy" resultType="departAccount" parameterType="Map">
+		SELECT * FROM DepartAccount
+		WHERE 1=1
+		<if test="_parameter.containsKey('departmentCode')">
+			AND departmentCode=#{departmentCode}
+		</if>
+		<if test="_parameter.containsKey('accountType')">
+			AND accountType=#{accountType}
+		</if>
+		<if test="_parameter.containsKey('delState')">
+			AND delState=#{delState}
+		</if>
+	</select>
+	
+	<select id="findByDepartmentCode" resultType="departAccount" parameterType="String">
+		SELECT * FROM DepartAccount
+		WHERE departmentCode=#{value}
+		AND delState=0
+	</select>
+	
+	<select id="findByCustomerAccountId" resultType="departAccount" parameterType="Long">
+		SELECT * FROM DepartAccount
+		WHERE customerAccountId=#{value}
+		AND delState=0
+	</select>
+
+	<insert id="insert" parameterType="departAccount" useGeneratedKeys="true" >
+        <selectKey resultType="long" keyProperty="departAccountId" order="BEFORE">
+            SELECT DepartAccount_SEQ.nextval AS departAccountId FROM dual
+        </selectKey>
+        INSERT INTO DepartAccount
+        (departAccountId,departmentCode,customerAccountId,accountType,createTime,delState)
+      	VALUES (#{departAccountId},#{departmentCode},#{customerAccountId},#{accountType},#{createTime, jdbcType=TIMESTAMP},#{delState})
+    </insert>
+
+	<insert id="update" parameterType="departAccount">
+		UPDATE departAccount
+		SET
+		<if test="departmentCode != null">
+			departmentCode=#{departmentCode},
+		</if>
+		<if test="customerAccountId != 0">
+			customerAccountId=#{customerAccountId},
+		</if>
+		<if test="accountType != null">
+			accountType=#{accountType},
+		</if>
+		delState=#{delState}
+		where departAccountId=#{departAccountId}
+	</insert>
+</mapper>

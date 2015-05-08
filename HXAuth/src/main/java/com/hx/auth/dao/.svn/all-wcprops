@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/bpm/!svn/ver/999/HXAuth/src/main/java/com/hx/auth/dao
+END
+IOptionLogDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/IOptionLogDao.java
+END
+IConstantDefineDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/IConstantDefineDao.java
+END
+AdminInfoPageDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/AdminInfoPageDaoImpl.java
+END
+IRoleInfoDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/IRoleInfoDao.java
+END
+ConstantDefinePageDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/ConstantDefinePageDaoImpl.java
+END
+IFunctionUrlDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/IFunctionUrlDao.java
+END
+IFunctionInfoDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/IFunctionInfoDao.java
+END
+IDepartAccountDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/IDepartAccountDao.java
+END
+IPositionDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/IPositionDao.java
+END
+MybatisDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/MybatisDao.java
+END
+IAdminInfoDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/bpm/!svn/ver/998/HXAuth/src/main/java/com/hx/auth/dao/IAdminInfoDao.java
+END
+FunctionInfoPageDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/FunctionInfoPageDaoImpl.java
+END
+IRoleFunctionDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/IRoleFunctionDao.java
+END
+IPageDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/IPageDao.java
+END
+IDepartmentDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpm/!svn/ver/999/HXAuth/src/main/java/com/hx/auth/dao/IDepartmentDao.java
+END
+IAdminRoleDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/IAdminRoleDao.java
+END
+OptionLogPageDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/dao/OptionLogPageDaoImpl.java
+END

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="roleInfoDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface"
+                  value="com.hx.auth.dao.IRoleInfoDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+    
+    <bean id="departmentDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface"
+                  value="com.hx.auth.dao.IDepartmentDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+    
+    <bean id="departAccountDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface"
+                  value="com.hx.auth.dao.IDepartAccountDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+    
+    <bean id="adminInfoDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface"
+                  value="com.hx.auth.dao.IAdminInfoDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean> 
+       
+    <bean id="positionDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface"
+                  value="com.hx.auth.dao.IPositionDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>    
+       
+    <bean id="adminRoleDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface"
+                  value="com.hx.auth.dao.IAdminRoleDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>    
+    
+    <bean id="adminInfoPageDaoImpl" class="com.hx.auth.dao.AdminInfoPageDaoImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+    
+    
+    <!-- 权限 -->
+    <bean id="functionInfoDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface"
+                  value="com.hx.auth.dao.IFunctionInfoDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+    
+    <bean id="functionUrlDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface"
+                  value="com.hx.auth.dao.IFunctionUrlDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+    
+    <bean id="roleFunctionDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface"
+                  value="com.hx.auth.dao.IRoleFunctionDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+    
+    <bean id="functionInfoPageDaoImpl" class="com.hx.auth.dao.FunctionInfoPageDaoImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+        
+    <!-- 日志 -->
+    <bean id="optionLogDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface"
+                  value="com.hx.auth.dao.IOptionLogDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+    <bean id="optionLogPageDaoImpl" class="com.hx.auth.dao.OptionLogPageDaoImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+</beans> 

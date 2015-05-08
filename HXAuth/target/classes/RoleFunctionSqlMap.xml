@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.auth.dao.IRoleFunctionDao">
+    <select id="findAll" resultType="RoleFunction">
+        
+    </select>
+    
+   	<select id="countAllRoleFunction" resultType="Integer">
+       
+    </select>
+    
+    <select id="findById" resultType="RoleFunction" parameterType="Long">
+       
+    </select>
+    
+    <select id="findByFunctionId" resultType="RoleFunction" parameterType="long">
+		SELECT * from RoleFunction
+		WHERE functionId=#{value}
+    </select>
+    
+    <select id="findByRoleId" resultType="RoleFunction" parameterType="long">
+		SELECT * from RoleFunction
+		WHERE roleId=#{value}
+    </select>
+    
+
+    <insert id="insert" parameterType="RoleFunction" useGeneratedKeys="true" >
+        <selectKey resultType="long" keyProperty="roleFunctionId" order="BEFORE">
+            SELECT RoleFunction_SEQ.nextval AS roleFunctionId FROM dual
+        </selectKey>
+        INSERT INTO RoleFunction
+            (roleFunctionId,functionId,roleId)
+      	VALUES (#{roleFunctionId},#{functionId},#{roleId})
+    </insert>
+    
+  	<select id="delete" parameterType="RoleFunction">
+        DELETE FROM RoleFunction
+		WHERE roleFunctionId=#{roleFunctionId}
+    </select>
+    
+   	<select id="deleteByFunctionId" parameterType="long">
+        DELETE FROM FunctionUrl
+		WHERE functionId=#{value}
+    </select>
+	
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.auth.dao.IFunctionInfoDao">
+    <select id="findAll" resultType="FunctionInfo">
+        SELECT * FROM FunctionInfo func
+        ORDER BY func.functionId ASC
+    </select>
+    
+   	<select id="countAllFunctionInfo" resultType="Integer">
+       
+    </select>
+    
+    <select id="findById" resultType="FunctionInfo" parameterType="Long">
+        SELECT * FROM FunctionInfo
+		WHERE functionId=#{value}
+    </select>
+    
+    <select id="findByPid" resultType="FunctionInfo" parameterType="Long">
+        SELECT * FROM FunctionInfo
+		WHERE pFunctionId=#{value}
+    </select>
+	
+    <select id="findByCode" resultType="FunctionInfo" parameterType="String">
+		SELECT * FROM FunctionInfo
+		WHERE functionCode=#{value}
+    </select>
+    
+    <select id="findByRoleId" resultType="FunctionInfo" parameterType="long">
+		SELECT func_info.* FROM FunctionInfo func_info
+		left join RoleFunction role_func
+		on func_info.functionId = role_func.functionId
+		WHERE role_func.roleId=#{value}
+    </select>
+
+    <insert id="insert" parameterType="FunctionInfo" useGeneratedKeys="true" >
+        <selectKey resultType="long" keyProperty="functionId" order="BEFORE">
+            SELECT FunctionInfo_SEQ.nextval AS functionId FROM dual
+        </selectKey>
+        INSERT INTO FunctionInfo
+            (functionId,functionCode,functionName,functionDesc,pFunctionId)
+      	VALUES (#{functionId}, #{functionCode},#{functionName},#{functionDesc},#{pFunctionId})
+    </insert>
+    
+  	<insert id ="update" parameterType="FunctionInfo">
+		UPDATE FunctionInfo SET 
+		<if test="functionName != null">
+			functionName=#{functionName},
+		</if>
+		<if test="functionDesc != null">
+			functionDesc=#{functionDesc},
+		</if>
+		functionCode=#{functionCode}
+		WHERE functionId=#{functionId} 
+	</insert>
+	
+	<select id="delete" parameterType="FunctionInfo">
+        DELETE FROM FunctionInfo
+		WHERE functionId=#{functionId}
+    </select>
+    
+</mapper>

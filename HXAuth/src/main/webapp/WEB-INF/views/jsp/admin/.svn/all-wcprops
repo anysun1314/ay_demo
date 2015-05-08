@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/jsp/admin
+END
+changePwd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/jsp/admin/changePwd.jsp
+END
+addAdmin.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/jsp/admin/addAdmin.jsp
+END
+changeAdminPwd.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/jsp/admin/changeAdminPwd.jsp
+END
+showAdminInfo.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/jsp/admin/showAdminInfo.jsp
+END
+adminsList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/jsp/admin/adminsList.jsp
+END
+showAdmin.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/jsp/admin/showAdmin.jsp
+END

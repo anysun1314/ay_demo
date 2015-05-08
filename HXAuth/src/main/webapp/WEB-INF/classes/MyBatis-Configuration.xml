@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties>
+        <property name="dialect" value="ORACLE"/>
+    </properties>
+
+    <typeAliases>
+    	<typeAlias type="com.hx.auth.bean.ConstantDefine" alias="constantDefine"/>
+    
+        <!--creditorrights-auth begin -->
+        <typeAlias type="com.hx.auth.bean.RoleInfo" alias="roleInfo"/>
+        <typeAlias type="com.hx.auth.bean.Department" alias="department"/>
+        <typeAlias type="com.hx.auth.bean.DepartAccount" alias="departAccount"/>
+        <typeAlias type="com.hx.auth.bean.AdminInfo" alias="admininfo"/>
+        <typeAlias type="com.hx.auth.bean.Position" alias="position"/>
+        <typeAlias type="com.hx.auth.bean.AdminRole" alias="adminRole"/>
+        <typeAlias type="com.hx.auth.bean.FunctionInfo" alias="functionInfo"/>
+        <typeAlias type="com.hx.auth.bean.FunctionUrl" alias="functionUrl"/>
+        <typeAlias type="com.hx.auth.bean.RoleFunction" alias="roleFunction"/>
+        <typeAlias type="com.hx.auth.bean.OptionLog" alias="optionLog"/>
+        <!--creditorrights-auth end -->
+    </typeAliases>
+
+    <!-- <plugins>
+        <plugin interceptor="com.hx.page.dialect.PaginationInterceptor"/>
+    </plugins> -->
+    
+    <mappers>
+    	<mapper resource="ConstantDefineSqlMap.xml"/>
+    
+        <mapper resource="RoleInfoSqlMap.xml"/>
+        <mapper resource="DepartmentSqlMap.xml"/>
+        <mapper resource="DepartAccountSqlMap.xml"/>
+        <mapper resource="AdminInfoSqlMap.xml"/>
+        <mapper resource="PositionSqlMap.xml"/>
+        <mapper resource="AdminRoleSqlMap.xml"/>
+        <mapper resource="FunctionInfoSqlMap.xml"/>
+        <mapper resource="FunctionUrlSqlMap.xml"/>
+        <mapper resource="RoleFunctionSqlMap.xml"/>
+        <mapper resource="OptionLogSqlMap.xml"/>
+    </mappers>
+
+</configuration>

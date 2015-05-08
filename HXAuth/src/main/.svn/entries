@@ -1,0 +1,44 @@
+10
+
+dir
+1090
+https://172.20.11.7/svn/bpm/HXAuth/src/main
+https://172.20.11.7/svn/bpm
+
+
+
+2015-03-09T06:20:50.796875Z
+1067
+anyang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+7489d39a-d984-bf44-9ab0-e77febf5ac98
+
+
+
+
+
+
+0
+
+java
+dir
+
+resources
+dir
+
+webapp
+dir
+

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/web.xml
+END
+dispatcherServlet-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/dispatcherServlet-servlet.xml
+END

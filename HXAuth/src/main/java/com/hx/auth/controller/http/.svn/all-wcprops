@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpm/!svn/ver/1067/HXAuth/src/main/java/com/hx/auth/controller/http
+END
+HttpLoginController.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/bpm/!svn/ver/287/HXAuth/src/main/java/com/hx/auth/controller/http/HttpLoginController.java
+END
+HttpRoleInfoController.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/bpm/!svn/ver/361/HXAuth/src/main/java/com/hx/auth/controller/http/HttpRoleInfoController.java
+END
+HttpDepartmentController.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/bpm/!svn/ver/1587/HXAuth/src/main/java/com/hx/auth/controller/http/HttpDepartmentController.java
+END
+HttpAdminInfoController.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/bpm/!svn/ver/997/HXAuth/src/main/java/com/hx/auth/controller/http/HttpAdminInfoController.java
+END

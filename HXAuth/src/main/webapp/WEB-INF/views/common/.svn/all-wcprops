@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/common
+END
+common.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/common/common.jsp
+END
+header.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/common/header.jsp
+END
+pageContext.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/bpm/!svn/ver/89/HXAuth/src/main/webapp/WEB-INF/views/common/pageContext.jsp
+END

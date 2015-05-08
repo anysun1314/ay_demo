@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.auth.dao.IOptionLogDao">
+    <select id="findAll" resultType="OptionLog">
+        SELECT opt_log.*,dept_info.departmentname departmentName,posi_info.positionname positionName
+        ,role_info.rolename roleName,admin_info.displayName adminName
+        FROM OptionLog opt_log
+        LEFT JOIN AdminRole admin_role ON opt_log.userRoleId = admin_role.userRoleId
+        LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+	    LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+	    LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+	    LEFT JOIN admininfo admin_info ON admin_role.adminid = admin_info.adminid
+	    WHERE 1=1
+	    <if test="adminName != null">
+           	AND admin_info.displayName LIKE '%${adminName}%'
+        </if>
+	    <if test="optionTime != null">
+           	AND to_char(opt_log.optionTime,'yyyy-mm-dd') = to_char(#{optionTime},'yyyy-mm-dd')
+        </if>
+	    <if test="logInfo != null">
+           	AND opt_log.logInfo LIKE '%${logInfo}%'
+        </if>
+        ORDER BY opt_log.optionLogId DESC
+    </select>
+    
+   	<select id="countAllOptionLog" resultType="Integer">
+        SELECT COUNT(1)
+        FROM OptionLog opt_log
+        LEFT JOIN AdminRole admin_role ON opt_log.userRoleId = admin_role.userRoleId
+        LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+	    LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+	    LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+	    LEFT JOIN admininfo admin_info ON admin_role.adminid = admin_info.adminid
+	    WHERE 1=1
+	     <if test="adminName != null">
+           	AND admin_info.displayName LIKE '%${adminName}%'
+        </if>
+	    <if test="optionTime != null">
+           	AND to_char(opt_log.optionTime,'yyyy-mm-dd') = to_char(#{optionTime},'yyyy-mm-dd')
+        </if>
+	    <if test="logInfo != null">
+           	AND opt_log.logInfo LIKE '%${logInfo}%'
+        </if>
+    </select>
+    
+    <select id="findById" resultType="OptionLog" parameterType="Long">
+        SELECT * FROM OptionLog
+		WHERE optionLogId=#{value}
+    </select>
+    
+    <select id="findByPid" resultType="OptionLog" parameterType="Long">
+        SELECT * FROM OptionLog
+		WHERE pFunctionId=#{value}
+    </select>
+	
+    <select id="findByCode" resultType="OptionLog" parameterType="String">
+		SELECT * FROM OptionLog
+		WHERE functionCode=#{value}
+    </select>
+    
+    <select id="findByRoleId" resultType="OptionLog" parameterType="long">
+		SELECT func_info.* FROM OptionLog func_info
+		left join RoleFunction role_func
+		on func_info.optionLogId = role_func.optionLogId
+		WHERE role_func.roleId=#{value}
+    </select>
+
+    <insert id="insert" parameterType="OptionLog" useGeneratedKeys="true" >
+        <selectKey resultType="long" keyProperty="optionLogId" order="BEFORE">
+            SELECT OptionLog_SEQ.nextval AS optionLogId FROM dual
+        </selectKey>
+        INSERT INTO OptionLog
+            (optionLogId,
+            <if test="userRoleId != 0">
+				userRoleId,
+			</if>
+            optionTime,loginIP,logInfo)
+      	VALUES (#{optionLogId}, 
+      		<if test="userRoleId != 0">
+				#{userRoleId},
+			</if>
+      		#{optionTime, jdbcType=TIMESTAMP},#{loginIP},#{logInfo})
+    </insert>
+    
+  	<insert id ="update" parameterType="OptionLog">
+		UPDATE OptionLog SET 
+		<if test="functionName != null">
+			functionName=#{functionName},
+		</if>
+		<if test="functionDesc != null">
+			functionDesc=#{functionDesc},
+		</if>
+		functionCode=#{functionCode}
+		WHERE optionLogId=#{optionLogId} 
+	</insert>
+	
+	<select id="delete" parameterType="OptionLog">
+        DELETE FROM OptionLog
+		WHERE optionLogId=#{optionLogId}
+    </select>
+     
+</mapper>

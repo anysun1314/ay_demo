@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/bpm/!svn/ver/1010/HXAuth/src/main/resources
+END
+PositionSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/PositionSqlMap.xml
+END
+applicationContext_auth_dao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/applicationContext_auth_dao.xml
+END
+MyBatis-Configuration.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/MyBatis-Configuration.xml
+END
+RoleFunctionSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/RoleFunctionSqlMap.xml
+END
+OptionLogSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/OptionLogSqlMap.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/log4j.properties
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/applicationContext.xml
+END
+DepartmentSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/bpm/!svn/ver/994/HXAuth/src/main/resources/DepartmentSqlMap.xml
+END
+FunctionUrlSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/FunctionUrlSqlMap.xml
+END
+DepartAccountSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/DepartAccountSqlMap.xml
+END
+AdminInfoSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/bpm/!svn/ver/1010/HXAuth/src/main/resources/AdminInfoSqlMap.xml
+END
+ConstantDefineSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/ConstantDefineSqlMap.xml
+END
+RoleInfoSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/RoleInfoSqlMap.xml
+END
+applicationContext_dao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/applicationContext_dao.xml
+END
+AdminRoleSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/AdminRoleSqlMap.xml
+END
+FunctionInfoSqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/bpm/!svn/ver/87/HXAuth/src/main/resources/FunctionInfoSqlMap.xml
+END
+config.properties
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpm/!svn/ver/1589/HXAuth/src/main/resources/config.properties
+END

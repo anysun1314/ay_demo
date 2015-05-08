@@ -1,0 +1,47 @@
+
+crs.driver=oracle.jdbc.driver.OracleDriver
+#crs.url=jdbc:oracle:thin:@127.0.0.1:1522:chcore
+#crs.username=chcore_alpha_2
+#crs.password=alpha890
+
+#crs.url=jdbc:oracle:thin:@192.168.0.220:1521:orcl
+#crs.username=chcore_dev
+#crs.password=chcore_dev
+
+#crs.url=jdbc:oracle:thin:@172.20.8.224:1521:chcore
+#crs.username=chcore_alpha_2_1017
+#crs.password=chcore_alpha_2_1017
+#crs.url=jdbc:oracle:thin:@172.16.10.97:1521:BPM
+#crs.username=hxauth_test
+#crs.password=hxauth_test
+crs.url=jdbc:oracle:thin:@172.20.10.238:1521:chcore
+crs.username=hxauth_test_0319
+crs.password=hxauth_test_0319
+
+#crs.url=jdbc:oracle:thin:@192.168.0.224:1521:chcore
+#crs.username=chcore_test
+
+#crs.username=chcore_alpha_2
+#crs.password=chcore_alpha_2
+
+crs.maximumConnectionCount=200
+crs.minimumConnectionCount=10
+crs.initialSize = 10
+
+customer.driver=oracle.jdbc.driver.OracleDriver
+customer.url=jdbc:oracle:thin:@172.20.10.238:1521:chcore
+customer.username=chcore_alpha_2_1017
+customer.password=chcore_alpha_2_1017
+#customer.username=chcore_alpha_1
+#customer.password=chcore_alpha_1
+
+customer.maximumConnectionCount=200
+customer.minimumConnectionCount=2
+customer.initialSize = 10
+
+##\u95E8\u5E97\u4FE1\u5BA1\u4E2D\u5FC3\u7684\u7EC4\u7EC7\u673A\u6784\u7F16\u7801
+bpm_departmentCode_creditCenter = 0104
+bpm_roleId_employee = 6
+##\u95E8\u5E97\u603B\u90E8\u7684\u7EC4\u7EC7\u673A\u6784\u7F16\u7801
+bpm_departmentCode_outletCenter = 0101
+

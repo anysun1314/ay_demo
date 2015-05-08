@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.auth.dao.IAdminInfoDao">
+    <select id="findAll" resultType="adminInfo">
+        SELECT admin_info.adminid,admin_info.displayname,admin_info.admincode,admin_info.loginname,admin_info.loginpwd,
+	        admin_info.createtime,admin_info.adminstate,admin_info.telphone,admin_info.email,admin_info.adminidcode,
+	        WMSYS.WM_CONCAT(distinct(dept_info.departmentname)) departmentname,
+	        WMSYS.WM_CONCAT(distinct(posi_info.positionname)) positionname,
+	        WMSYS.WM_CONCAT(distinct(role_info.rolename)) rolename
+	        FROM admininfo admin_info
+	        LEFT JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+	        LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+	        LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+	        LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+	    WHERE 1=1
+	    <if test="displayName != null">
+           	AND admin_info.displayName LIKE '%${displayName}%'
+        </if>
+        <if test="adminCode != null">
+            AND admin_info.adminCode = #{adminCode}
+        </if>
+        <if test="email != null">
+            AND admin_info.email = #{email}
+        </if>
+        <if test="telPhone != null">
+            AND admin_info.telPhone = #{telPhone}
+        </if>
+        <if test="adminState != 0">
+            AND admin_info.adminState = #{adminState}
+        </if>
+        <if test="positionId != 0">
+            AND posi_info.positionId = #{positionId}
+        </if>
+        <if test="departmentCode != null">
+            AND dept_info.departmentCode = #{departmentCode}
+        </if>
+	    AND admin_role.delState = 0
+	    GROUP BY admin_info.adminid,admin_info.displayname,admin_info.admincode,admin_info.loginname,admin_info.loginpwd,
+	    	admin_info.createtime,admin_info.adminstate,admin_info.telphone,admin_info.email,admin_info.adminidcode
+	    ORDER BY admin_info.adminid DESC
+        <!-- 
+        SELECT admin_info.*,wmsys.wm_concat(dept_info.departmentname),wmsys.wm_concat(posi_info.positionname),wmsys.wm_concat(role_info.rolename)
+        	
+        FROM admininfo admin_info
+		    LEFT JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+		    LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		WHERE 1=1
+			<if test="displayName != null">
+            	AND admin_info.displayName LIKE '%${displayName}%'
+	        </if>
+	        <if test="adminCode != null">
+	            AND admin_info.adminCode = #{adminCode}
+	        </if>
+	        <if test="email != null">
+	            AND admin_info.email = #{email}
+	        </if>
+	        <if test="telPhone != null">
+	            AND admin_info.telPhone = #{telPhone}
+	        </if>
+	        <if test="adminState != 0">
+	            AND admin_info.adminState = #{adminState}
+	        </if>
+	        <if test="positionId != 0">
+	            AND posi_info.positionId = #{positionId}
+	        </if>
+	        <if test="departmentCode != null">
+	            AND dept_info.departmentCode = #{departmentCode}
+	        </if>
+	            AND admin_role.delState = 0
+        ORDER BY admin_info.createTime DESC
+         -->
+    </select>
+    
+   	<select id="countAllAdminInfo" resultType="Integer">
+        SELECT COUNT(1) FROM (
+		    SELECT COUNT(admin_info.adminid)
+		       FROM admininfo admin_info
+		       LEFT JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+		       LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		       LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		       LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		    WHERE 1=1
+		    <if test="displayName != null">
+            	AND admin_info.displayName = #{displayName}
+	        </if>
+	        <if test="adminCode != null">
+	            AND admin_info.adminCode = #{adminCode}
+	        </if>
+	        <if test="email != null">
+	            AND admin_info.email = #{email}
+	        </if>
+	        <if test="telPhone != null">
+	            AND admin_info.telPhone = #{telPhone}
+	        </if>
+	        <if test="adminState != 0">
+	            AND admin_info.adminState = #{adminState}
+	        </if>
+	        <if test="positionId != 0">
+	            AND posi_info.positionId = #{positionId}
+	        </if>
+	        <if test="departmentCode != null">
+	            AND dept_info.departmentCode = #{departmentCode}
+	        </if>
+		    AND admin_role.delState = 0
+		    GROUP BY admin_info.adminid
+		) 
+        
+        <!-- 
+        SELECT count(1)
+		FROM admininfo admin_info
+		    LEFT JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+		    LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+        WHERE 1=1
+			<if test="displayName != null">
+            	AND admin_info.displayName = #{displayName}
+	        </if>
+	        <if test="adminCode != null">
+	            AND admin_info.adminCode = #{adminCode}
+	        </if>
+	        <if test="email != null">
+	            AND admin_info.email = #{email}
+	        </if>
+	        <if test="telPhone != null">
+	            AND admin_info.telPhone = #{telPhone}
+	        </if>
+	        <if test="adminState != 0">
+	            AND admin_info.adminState = #{adminState}
+	        </if>
+	        <if test="positionId != 0">
+	            AND posi_info.positionId = #{positionId}
+	        </if>
+	        <if test="departmentCode != null">
+	            AND dept_info.departmentCode = #{departmentCode}
+	        </if>
+	        	AND admin_role.delState = 0
+	        -->
+    </select>
+    
+    <select id="findById" resultType="adminInfo" parameterType="Long">
+        <!-- SELECT * FROM  AdminInfo
+        where adminId=#{value} -->
+        
+        SELECT admin_info.adminCode,admin_info.adminIDCode,admin_info.adminId,admin_info.adminState
+        	,admin_info.displayName,admin_info.email,admin_info.loginName,admin_info.telPhone,admin_info.createtime
+        	,dept_info.departmentname,posi_info.positionname,role_info.rolename,role_info.rolecode
+        	,dept_info.departmentcode,posi_info.positionid,role_info.roleid,admin_role.userRoleId
+        FROM admininfo admin_info
+		    LEFT JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+		    LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		WHERE admin_info.adminid = #{value}
+		AND admin_role.delState = 0
+		AND admin_info.adminState = 1
+    </select>
+
+    <insert id="insert" parameterType="adminInfo" useGeneratedKeys="true" >
+        <selectKey resultType="long" keyProperty="adminId" order="BEFORE">
+            SELECT adminInfo_SEQ.nextval AS adminId FROM dual
+        </selectKey>
+        INSERT INTO adminInfo
+            (adminId,displayName,adminCode,loginName,loginPwd,createTime,
+             adminState,telPhone,adminIDCode,email)
+      	VALUES (#{adminId}, #{displayName},#{adminCode},#{loginName},#{loginPwd},
+      	#{createTime, jdbcType=TIMESTAMP},#{adminState},#{telPhone},#{adminIDCode},
+        #{email})
+    </insert>
+    
+  	<insert id ="update" parameterType="admininfo">
+		UPDATE admininfo 
+		SET 
+		<if test="displayName != null">
+			displayName=#{displayName},
+		</if>
+		<if test="adminCode != null">
+			adminCode=#{adminCode},
+		</if>
+		<if test="loginName != null">
+			loginName=#{loginName},
+		</if>
+		<if test="telPhone != null">
+			telPhone=#{telPhone},
+		</if>
+		<if test="adminIDCode != null">
+			adminIDCode=#{adminIDCode},
+		</if>
+		<if test="email != null">
+			email=#{email},
+		</if>
+		<if test="adminState != 0">
+			adminState=#{adminState},
+		</if>
+		<if test="loginPwd != null">
+			loginPwd=#{loginPwd}
+		</if>
+		WHERE adminId=#{adminId} 
+	</insert>
+	
+    <select id="findByCode" resultType="admininfo" parameterType="String">
+		SELECT admin_info.* from admininfo admin_info
+		LEFT JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+		LEFT JOIN roleinfo role_info ON role_info.roleid = admin_role.roleid
+		LEFT JOIN department dp ON admin_role.departmentcode = dp.departmentcode
+		WHERE EXISTS(
+		      SELECT 1 FROM admininfo c_info
+		      WHERE c_info.admincode = #{adminCode}
+		      AND c_info.adminid = admin_info.adminid
+		)
+    </select>
+    
+    <select id="findByCodeAndName" resultType="admininfo">
+        SELECT * FROM  admininfo
+        where admincode = #{adminCode}
+        and displayname = #{adminName}
+    </select>    
+
+	<select id="findByLoginName" resultType="admininfo"  parameterType="String">
+        SELECT admin_info.*,dept_info.departmentname,posi_info.positionname,role_info.rolename,role_info.roleCode
+        	,dept_info.departmentcode,posi_info.positionid,role_info.roleid,admin_role.userRoleId
+        FROM admininfo admin_info
+		    INNER JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+		    INNER JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    INNER JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    INNER JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		WHERE loginName = #{loginName}
+		AND admin_role.delState = 0
+    </select>
+
+	<select id="findAdminInfosByRoleCode" resultType="admininfo"  parameterType="String">
+        SELECT admin_info.adminCode,admin_info.adminIDCode,admin_info.adminId,admin_info.adminState
+        	,admin_info.displayName,admin_info.email,admin_info.loginName,admin_info.telPhone
+        	,dept_info.departmentname,posi_info.positionname,role_info.rolename,role_info.rolecode
+        	,dept_info.departmentcode,posi_info.positionid,role_info.roleid,admin_role.userRoleId
+        FROM admininfo admin_info
+		    INNER JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+		    INNER JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    INNER JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    INNER JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		WHERE role_info.roleCode = #{roleCode}
+		AND admin_role.delState = 0
+		AND admin_info.adminState = 1
+    </select>
+    
+	<select id="findAdminInfosByAdminCode" resultType="admininfo"  parameterType="String">
+        SELECT admin_info.adminCode,admin_info.adminIDCode,admin_info.adminId,admin_info.adminState
+        	,admin_info.displayName,admin_info.email,admin_info.loginName,admin_info.telPhone
+        	,dept_info.departmentname,posi_info.positionname,role_info.rolename,role_info.rolecode
+        	,dept_info.departmentcode,posi_info.positionid,role_info.roleid,admin_role.userRoleId
+        FROM admininfo admin_info
+		    INNER JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+		    INNER JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    INNER JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    INNER JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		WHERE admin_info.adminCode = #{adminCode}
+		AND admin_role.delState = 0
+		AND admin_info.adminState = 1
+    </select>
+    
+    <select id="findByAdminIdCode" resultType="admininfo"  parameterType="String">
+        SELECT admin_info.*,dept_info.departmentname,posi_info.positionname,role_info.rolename
+        	,dept_info.departmentcode,posi_info.positionid,role_info.roleid
+        FROM admininfo admin_info
+		    INNER JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+		    INNER JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    INNER JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    INNER JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		WHERE adminIdCode = #{adminIdCode}
+		AND admin_role.delState = 0
+    </select>
+    
+    <select id="findByEmail" resultType="admininfo"  parameterType="String">
+        SELECT admin_info.*
+        FROM admininfo admin_info
+		WHERE email = #{email}
+    </select>
+    
+    <select id="findByTelPhone" resultType="admininfo"  parameterType="String">
+        SELECT admin_info.*
+        FROM admininfo admin_info
+		WHERE telPhone = #{telPhone}
+    </select>
+    
+    <select id="findByDepartmentCode" resultType="adminInfo" parameterType="Map">
+        SELECT admin_role.*,dept_info.departmentname,posi_info.positionname,role_info.rolename,admin_info.*
+        FROM AdminRole admin_role
+		    LEFT JOIN admininfo admin_info ON admin_role.adminid = admin_info.adminid
+		    LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		WHERE admin_role.departmentcode = #{departmentCode}
+		<if test="_parameter.containsKey('delState')">
+			AND admin_role.delstate = #{delState}
+		</if>
+		AND admin_role.delState = 0
+		ORDER BY admin_role.userroleid DESC
+    </select>
+    
+    <select id="findByDepartmentCodeConcat" resultType="adminInfo" parameterType="Map">
+        SELECT admin_info.adminid,admin_info.displayname,admin_info.admincode,admin_info.loginname,
+	    admin_info.createtime,admin_info.adminstate,admin_info.telphone,admin_info.email,admin_info.adminidcode,
+        WMSYS.WM_CONCAT(distinct(admin_role.userRoleId)) userRoleIds,
+        WMSYS.WM_CONCAT(distinct(posi_info.positionname)) positionname,
+	    WMSYS.WM_CONCAT(distinct(role_info.rolename)) rolename
+        FROM AdminRole admin_role
+		    LEFT JOIN admininfo admin_info ON admin_role.adminid = admin_info.adminid
+		    LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		WHERE admin_role.departmentcode = #{departmentCode}
+		<if test="_parameter.containsKey('delState')">
+			AND admin_role.delstate = #{delState}
+		</if>
+		AND admin_role.delState = 0
+		GROUP BY admin_info.adminid,admin_info.displayname,admin_info.admincode,admin_info.loginname,
+	    admin_info.createtime,admin_info.adminstate,admin_info.telphone,admin_info.email,admin_info.adminidcode
+		ORDER BY admin_info.adminid DESC
+    </select>
+    
+    <select id="findAllAdminWithAccount" resultType="adminInfo">
+        SELECT admin_info.adminid,admin_info.displayname,admin_info.admincode,admin_info.loginname,admin_info.loginpwd,
+	        admin_info.createtime,admin_info.adminstate,admin_info.telphone,admin_info.email,admin_info.adminidcode,
+	        WMSYS.WM_CONCAT(distinct(dept_info.departmentname)) departmentname,
+	        WMSYS.WM_CONCAT(distinct(posi_info.positionname)) positionname,
+	        WMSYS.WM_CONCAT(distinct(role_info.rolename)) rolename
+	    FROM admininfo admin_info
+	        LEFT JOIN adminrole admin_role ON admin_info.adminid = admin_role.adminid
+	        LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+	        LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+	        LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+	    WHERE 1=1
+	    and admincode != 'system'
+	    --AND admin_role.delState = 0
+	    --AND dept_info.enableAccount = 1 
+	    GROUP BY admin_info.adminid,admin_info.displayname,admin_info.admincode,admin_info.loginname,admin_info.loginpwd,
+	    	admin_info.createtime,admin_info.adminstate,admin_info.telphone,admin_info.email,admin_info.adminidcode
+	    --ORDER BY admin_info.adminid DESC
+	    ORDER BY displayname ASC
+    </select>
+    
+    <select id="findAdminInfoById" resultType="admininfo"  parameterType="Long">
+        SELECT * FROM admininfo 
+        WHERE adminId = #{value}
+    </select>
+    
+    <select id="findAdminInfosByDepartmentCodeAndRoleId" resultType="adminInfo" parameterType="Map">
+        SELECT admin_info.adminid,admin_info.displayname,admin_info.admincode,admin_info.loginname,
+	    admin_info.createtime,admin_info.adminstate,admin_info.telphone,admin_info.email,admin_info.adminidcode,
+        WMSYS.WM_CONCAT(distinct(admin_role.userRoleId)) userRoleIds,
+        WMSYS.WM_CONCAT(distinct(posi_info.positionname)) positionname,
+	    WMSYS.WM_CONCAT(distinct(role_info.rolename)) rolename
+        FROM AdminRole admin_role
+		    LEFT JOIN admininfo admin_info ON admin_role.adminid = admin_info.adminid
+		    LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		WHERE admin_role.departmentcode = #{departmentCode}
+		<if test="_parameter.containsKey('roleId')">
+			AND admin_role.roleid = #{roleId}
+		</if>
+		<if test="_parameter.containsKey('delState')">
+			AND admin_role.delstate = #{delState}
+		</if>
+		AND admin_role.delState = 0
+		GROUP BY admin_info.adminid,admin_info.displayname,admin_info.admincode,admin_info.loginname,
+	    admin_info.createtime,admin_info.adminstate,admin_info.telphone,admin_info.email,admin_info.adminidcode
+		ORDER BY admin_info.adminid DESC
+    </select>
+    
+    <select id="findAdminInfosByDepartmentCodeAndRoleCode" resultType="adminInfo" parameterType="Map">
+        SELECT admin_info.adminid,admin_info.displayname,admin_info.admincode,admin_info.loginname,
+	    admin_info.createtime,admin_info.adminstate,admin_info.telphone,admin_info.email,admin_info.adminidcode,
+        WMSYS.WM_CONCAT(distinct(admin_role.userRoleId)) userRoleIds,
+        WMSYS.WM_CONCAT(distinct(posi_info.positionname)) positionname,
+	    WMSYS.WM_CONCAT(distinct(role_info.rolename)) rolename
+        FROM AdminRole admin_role
+		    LEFT JOIN admininfo admin_info ON admin_role.adminid = admin_info.adminid
+		    LEFT JOIN department dept_info ON admin_role.departmentcode = dept_info.departmentcode
+		    LEFT JOIN position posi_info ON admin_role.positionid = posi_info.positionid
+		    LEFT JOIN roleinfo role_info ON admin_role.roleid = role_info.roleid
+		WHERE admin_role.departmentcode = #{departmentCode}
+		<if test="_parameter.containsKey('roleCode')">
+			AND role_info.rolecode = #{roleCode}
+		</if>
+		<if test="_parameter.containsKey('delState')">
+			AND admin_role.delstate = #{delState}
+		</if>
+		AND admin_role.delState = 0
+		GROUP BY admin_info.adminid,admin_info.displayname,admin_info.admincode,admin_info.loginname,
+	    admin_info.createtime,admin_info.adminstate,admin_info.telphone,admin_info.email,admin_info.adminidcode
+		ORDER BY admin_info.adminid DESC
+    </select>
+</mapper>

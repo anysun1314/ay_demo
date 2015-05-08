@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.auth.dao.IConstantDefineDao">
+
+
+    <select id="findAll" resultType="constantDefine">
+        SELECT * FROM ConstantDefine constantDefine
+        where 1=1
+        <if test="constantName != null">
+            and constantName like '%${constantName}%'
+        </if>
+        <if test="constantType != null">
+            and constantType like '%${constantType}%'
+        </if>
+        <if test="constantTypeCode != null">
+            and constantTypeCode like '%${constantTypeCode}%'
+        </if>
+        order by constantTypeCode ,constantValue
+    </select>
+
+    <select id="countFindAllConstantDefine" resultType="Integer">
+        SELECT count(1) FROM ConstantDefine constantDefine
+        where 1=1
+        <if test="constantName != null">
+            and constantName like '%${constantName}%'
+        </if>
+        <if test="constantType != null">
+            and constantType like '%${constantType}%'
+        </if>
+        <if test="constantTypeCode != null">
+            and constantTypeCode like '%${constantTypeCode}%'
+        </if>
+    </select>
+
+    <select id="findById" resultType="constantDefine" parameterType="Long">
+        select * from  constantDefine
+        where constantDefineId=#{value}
+    </select>
+
+    <insert id="insert" parameterType="constantDefine" useGeneratedKeys="true">
+        <selectKey resultType="long" keyProperty="constantDefineId" order="BEFORE">
+            select CONSTANTDEFINE_SEQ.nextval as constantDefineId from dual
+        </selectKey>
+        INSERT INTO ConstantDefine
+        ( constantDefineId,constantType,
+        constantName,
+        constantValue,
+        constantTypeCode,
+        parentconstant
+        )
+        VALUES (#{constantDefineId}, #{constantType},
+        #{constantName},
+        #{constantValue},
+        #{constantTypeCode},
+        #{parentConstant})
+    </insert>
+
+    <resultMap type="com.hx.auth.bean.ConstantDefine" id="constantDefineMap">
+        <result property="constantDefineId" column="constantdefineid"/>
+        <result property="constantType" column="constanttype"/>
+        <result property="constantName" column="constantname"/>
+        <result property="constantValue" column="constantvalue"/>
+        <result property="constantTypeCode" column="constanttypecode"/>
+        <result property="parentConstant" column="parentconstant"/>
+    </resultMap>
+    <select id="findsById" resultMap="constantDefineMap" parameterType="Long">
+		SELECT * FROM constantDefine
+		WHERE parentConstant=#{value}
+		order by constantValue
+	</select>
+
+    <select id="getConstantDefinesByType" resultType="constantDefine" parameterType="String">
+        select * from ConstantDefine where constantTypeCode = #{value}
+        order by constantValue
+    </select>
+
+    <!-- 处理费用类别回显开始-->
+    <select id="doFeesTypeEcho" resultType="constantDefine" parameterType="String">
+        select *
+        from constantdefine
+        where constantdefineid =
+        (select parentconstant
+        from constantdefine
+        where constanttypecode = 'itemChildType'
+        and constantvalue = #{constantvalue})
+    </select>
+    <!-- 处理费用类别回显结束-->
+
+    <update id="update" parameterType="constantdefine">
+        update constantdefine a
+           set a.constanttype =#{constantType},
+               a.constantname =#{constantName},
+               a.constantvalue =#{constantValue}  ,
+               a.constanttypecode = #{constantTypeCode},
+               a.parentconstant=#{parentConstant}
+               where a.constantdefineid=#{constantDefineId}
+    </update>
+
+    <select id="findByTypeCodeAndParentConstant" resultType="constantDefine" parameterType="constantDefine">
+        select * from ConstantDefine where constantTypeCode = #{constantTypeCode} and parentconstant=#{parentConstant}
+        order by to_number(constantValue,9999999) asc
+    </select>
+    <select id="findConstantByTypeCodeAndValue" resultType="constantDefine" parameterType="constantDefine">
+        select * from ConstantDefine where constantTypeCode = #{constantTypeCode}
+        and constantValue = #{constantValue}
+    </select>
+</mapper>

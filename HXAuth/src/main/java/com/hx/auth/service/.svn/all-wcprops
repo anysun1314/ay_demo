@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/bpm/!svn/ver/1011/HXAuth/src/main/java/com/hx/auth/service
+END
+AdminRoleService.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/AdminRoleService.java
+END
+AdminRoleServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/AdminRoleServiceImpl.java
+END
+FunctionInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/FunctionInfoService.java
+END
+FunctionInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/FunctionInfoServiceImpl.java
+END
+PositionService.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/PositionService.java
+END
+PositionServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/PositionServiceImpl.java
+END
+RoleFunctionService.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/RoleFunctionService.java
+END
+RoleFunctionServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/RoleFunctionServiceImpl.java
+END
+OptionLogService.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/OptionLogService.java
+END
+OptionLogServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/OptionLogServiceImpl.java
+END
+DepartmentService.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpm/!svn/ver/1588/HXAuth/src/main/java/com/hx/auth/service/DepartmentService.java
+END
+DepartmentServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpm/!svn/ver/1642/HXAuth/src/main/java/com/hx/auth/service/DepartmentServiceImpl.java
+END
+FunctionUrlService.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/FunctionUrlService.java
+END
+FunctionUrlServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/FunctionUrlServiceImpl.java
+END
+DepartAccountService.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/DepartAccountService.java
+END
+DepartAccountServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/DepartAccountServiceImpl.java
+END
+AdminInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpm/!svn/ver/993/HXAuth/src/main/java/com/hx/auth/service/AdminInfoService.java
+END
+AdminInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpm/!svn/ver/1011/HXAuth/src/main/java/com/hx/auth/service/AdminInfoServiceImpl.java
+END
+ConstantDefineService.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/ConstantDefineService.java
+END
+ConstantDefineServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/ConstantDefineServiceImpl.java
+END
+RoleInfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/RoleInfoService.java
+END
+RoleInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/service/RoleInfoServiceImpl.java
+END

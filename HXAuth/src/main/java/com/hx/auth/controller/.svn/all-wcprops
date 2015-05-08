@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/bpm/!svn/ver/1067/HXAuth/src/main/java/com/hx/auth/controller
+END
+RoleInfoController.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/controller/RoleInfoController.java
+END
+FuntionController.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/controller/FuntionController.java
+END
+DepartmentController.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/controller/DepartmentController.java
+END
+BaseController.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/controller/BaseController.java
+END
+OptionLogController.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/controller/OptionLogController.java
+END
+AdminInfoController.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/controller/AdminInfoController.java
+END
+LoginController.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/controller/LoginController.java
+END
+PositionController.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/bpm/!svn/ver/85/HXAuth/src/main/java/com/hx/auth/controller/PositionController.java
+END

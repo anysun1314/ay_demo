@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.auth.dao.IAdminRoleDao">
+    <select id="findAll" resultType="adminRole">
+        SELECT * FROM AdminRole
+        AND delState = 0
+    </select>
+    <select id="findById" resultType="adminRole" parameterType="Long">
+        SELECT * FROM  AdminRole
+        WHERE userRoleId=#{value}
+        AND delState = 0
+    </select>
+    <select id="findByAdminId" resultType="adminRole" parameterType="Long">
+        SELECT * FROM  AdminRole
+        WHERE adminId=#{value}
+        AND delState = 0
+    </select>
+    
+   <insert id="insert" parameterType="adminRole" useGeneratedKeys="true" >
+        <selectKey resultType="long" keyProperty="userRoleId" order="BEFORE">
+            SELECT adminRole_SEQ.nextval AS userRoleId FROM dual
+        </selectKey>
+        INSERT INTO adminRole
+        (userRoleId,departmentCode,roleId,adminId,positionId,delState)
+      	VALUES (#{userRoleId},#{departmentCode},#{roleId},#{adminId},#{positionId},#{delState})
+    </insert>
+    
+    <insert id ="update" parameterType="adminRole">
+        UPDATE adminRole SET departmentCode=#{departmentCode},roleId=#{roleId}
+        ,positionId=#{positionId}
+        WHERE userRoleId = #{userRoleId}
+    </insert>
+    
+    <insert id ="delete" parameterType="adminRole">
+        UPDATE adminRole SET delState=#{delState}
+        WHERE userRoleId = #{userRoleId}
+    </insert>
+</mapper>

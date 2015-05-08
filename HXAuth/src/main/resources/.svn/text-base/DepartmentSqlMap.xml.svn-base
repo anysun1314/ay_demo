@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.auth.dao.IDepartmentDao">
+	<select id="findAll" resultType="department">
+		SELECT * FROM Department dept
+		ORDER BY LENGTH(dept.departmentCode) ASC
+	</select>
+	<select id="findByCode" resultType="department" parameterType="String">
+		SELECT * FROM Department
+		WHERE departmentCode=#{value}
+	</select>
+
+	<insert id="insert" parameterType="department">
+		insert into department
+		(departmentcode,
+		<!-- <if test="customerAccountId != 0">
+			customeraccountid,
+		</if> -->
+		deptdesc,pdeptcode,departmentname,nodetype,nodevalue,delstate
+		<if test="enableAccount != null">
+			,enableaccount
+		</if>
+		)
+		values (#{departmentCode},
+		<!-- <if test="customerAccountId != 0">
+			#{customerAccountId},
+		</if> -->
+		#{deptDesc},#{pDeptCode},#{departmentName},#{nodeType},#{nodeValue},#{delState}
+		<if test="enableAccount != null">
+			,#{enableAccount}
+		</if>
+		)
+	</insert>
+
+	<resultMap type="com.hx.auth.bean.Department"
+		id="departmentMap">
+		<result property="departmentCode" column="departmentcode" />
+		<result property="deptDesc" column="deptdesc" />
+		<result property="pDeptCode" column="pdeptcode" />
+		<result property="departmentName" column="departmentname" />
+	</resultMap>
+	<select id="findChildByCode" resultMap="departmentMap"
+		parameterType="department">
+		SELECT * FROM Department
+		WHERE pDeptCode=#{pDeptCode}
+		<if test="delState != 0">
+			and delstate=#{delState}
+		</if>
+	</select>
+	
+	<select id="findAllChildByCode" resultMap="departmentMap"
+		parameterType="department">
+		SELECT * FROM Department
+		WHERE pDeptCode=#{pDeptCode}
+	</select>
+
+	<insert id="update" parameterType="department">
+		UPDATE department
+		SET
+		<!-- <if test="customerAccountId != 0">
+			customerAccountId=#{customerAccountId},
+		</if> -->
+		<if test="deptDesc != null">
+			deptDesc=#{deptDesc},
+		</if>
+		<if test="enableAccount != 0">
+			enableAccount=#{enableAccount},
+		</if>
+		<if test="pDeptCode != null">
+			pDeptCode=#{pDeptCode},
+		</if>
+		<if test="nodeType != 0">
+			nodeType=#{nodeType},
+		</if>
+		<if test="nodeValue != null">
+			nodeValue=#{nodeValue},
+		</if>
+		departmentName=#{departmentName}
+		where departmentCode=#{departmentCode}
+	</insert>
+
+	<select id="findByAdminCode" resultType="department"
+		parameterType="String">
+		SELECT * FROM Department
+		WHERE departmentCode IN
+		(SELECT departmentCode FROM AdminRole
+		WHERE adminId =
+		(SELECT adminId FROM AdminInfo
+		WHERE adminCode = #{value}
+		))
+	</select>
+	<!-- 
+	<select id="isExistDepartment" resultType="long">
+		select customeraccountid from department where customerAccountId is not null
+	</select>
+	 -->
+	<insert id="delete" parameterType="department">
+		UPDATE department
+		SET delstate=#{delState}
+		WHERE departmentcode=#{departmentCode}
+	</insert>
+
+	<select id="findBy" resultType="department" parameterType="Map">
+		SELECT * FROM Department
+		WHERE (1=1)
+		<if test="_parameter.containsKey('adminCode')">
+				and departmentCode =
+				(SELECT departmentCode FROM AdminRole
+				WHERE adminId =
+				(SELECT admin_.adminId FROM AdminInfo admin_
+				inner join adminrole admin_role_
+				on admin_role_.adminid = admin_.adminid
+				inner join roleinfo role_
+				on role_.roleid = admin_role_.roleid
+				WHERE adminCode = #{adminCode}
+				and delstate = #{delState}
+				)
+				and delstate=#{delState})			
+		</if>
+		<if test="_parameter.containsKey('enableAccount')">
+			and enableaccount = #{enableAccount}
+		</if>
+		 
+		<if test="_parameter.containsKey('delState')">
+			<if test="delState != 0">
+				and delstate=#{delState}
+			</if>
+		</if>
+		<if test="_parameter.containsKey('nodeType')">
+			<if test="nodeType != 0">
+				and nodeType=#{nodeType}
+			</if>
+		</if>
+		<!-- <if test="_parameter.containsKey('pDeptCode')">
+			<if test="pDeptCode != 0">
+				and pDeptCode=#{pDeptCode}
+			</if>
+		</if> -->
+		ORDER BY departmentCode ASC
+	</select>
+	
+	<select id="findAllRoots" resultType="department" >
+		SELECT * FROM Department
+		WHERE pDeptCode IS NUll
+		<if test="delState != 0">
+			and delstate=#{delState}
+		</if>
+	</select>
+	
+</mapper>

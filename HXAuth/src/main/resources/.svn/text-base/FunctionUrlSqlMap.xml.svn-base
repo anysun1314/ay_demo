@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hx.auth.dao.IFunctionUrlDao">
+    <select id="findAll" resultType="FunctionUrl">
+        SELECT * FROM FunctionUrl
+		ORDER BY urlId DESC
+    </select>
+    
+    <select id="findAllUrls" resultType="String">
+        SELECT DISTINCT urlInfo FROM FunctionUrl
+    </select>
+    
+    <select id="findById" resultType="FunctionUrl" parameterType="Long">
+        SELECT * FROM FunctionUrl
+		WHERE urlId=#{value}
+    </select>
+    
+    <select id="findByFunctionId" resultType="FunctionUrl" parameterType="long">
+		SELECT * FROM FunctionUrl
+		WHERE functionId=#{value}
+		ORDER BY urlId DESC
+    </select>
+    
+    <select id="findByUrlInfo" resultType="FunctionUrl" parameterType="String">
+		SELECT * FROM FunctionUrl
+		WHERE urlInfo=#{value}
+		ORDER BY urlId DESC
+    </select>
+
+    <insert id="insert" parameterType="FunctionUrl" useGeneratedKeys="true" >
+        <selectKey resultType="long" keyProperty="urlId" order="BEFORE">
+            SELECT FunctionUrl_SEQ.nextval AS urlId FROM dual
+        </selectKey>
+        INSERT INTO FunctionUrl (urlId,urlInfo,functionId)
+      	VALUES (#{urlId}, #{urlInfo},#{functionId})
+    </insert>
+    
+  	<insert id ="update" parameterType="FunctionUrl">
+		UPDATE FunctionUrl SET 
+		<if test="urlInfo != null">
+			urlInfo=#{urlInfo},
+		</if>
+			functionId=#{functionId}
+		WHERE urlId=#{urlId} 
+	</insert>
+	
+   	<select id="delete" parameterType="FunctionUrl">
+        DELETE FROM FunctionUrl
+		WHERE urlId=#{urlId}
+    </select>
+    
+   	<select id="deleteByFunctionId" parameterType="long">
+        DELETE FROM FunctionUrl
+		WHERE functionId=#{value}
+    </select>
+    
+</mapper>
